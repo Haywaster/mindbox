@@ -1,0 +1,64 @@
+@import './normalize.css';
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap';
+
+:root {
+  font-family: Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --main-bg: antiquewhite;
+  --black: #000;
+  --black-light: #0000001a;
+  --gray100: #f1f1f1;
+  --gray200: #e1e1e1;
+  --gray300: #d1d1d1;
+  --gray400: #b1b1b1;
+  --gray500: #a1a1a1;
+  --gray600: #909090;
+  --gray700: #808080;
+  --gray800: #707070;
+  --gray900: #606060;
+  --white: #fff;
+  --primary-color: #304ff1;
+  --primary-text-color: #fff;
+  --primary-hover-color: #1f3b9b;
+  --primary-active-color: #1941c6;
+  --secondary-color: #f1f1f1;
+  --secondary-text-color: #000;
+  --range-color: #ddd;
+  --range-color-active: #ccc;
+  --red: #f00;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  background-color: var(--main-bg);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  padding: 20px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  min-height: 100vh;
+}
+
+svg,
+img {
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}

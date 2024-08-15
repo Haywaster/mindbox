@@ -1,0 +1,13 @@
+.section {
+  margin-top: 15px;
+}
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emptyList {
+  text-align: center;
+}
