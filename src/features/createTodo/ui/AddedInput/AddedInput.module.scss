@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.remove {
+  border-radius: 50%;
+  color: var(--white);
+  background-color: var(--red);
+
+  svg {
+    rotate: 45deg;
+  }
+}

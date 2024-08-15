@@ -1,0 +1,51 @@
+.wrapper {
+  list-style-type: none;
+  cursor: pointer;
+  background-color: var(--white);
+  box-shadow: 0 -0.5px 1rem rgb(0 0 0 / 15%);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+
+  & > svg {
+    transition: transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--black);
+  }
+}
+
+.list {
+  display: none;
+  border-bottom: 1px solid var(--black);
+}
+
+.remove {
+  margin-left: auto;
+
+  & > svg {
+    rotate: 45deg;
+  }
+}
+
+.expanded {
+  .list {
+    display: block;
+  }
+
+  .main {
+    & > svg {
+      transform: rotate(180deg);
+    }
+  }
+}

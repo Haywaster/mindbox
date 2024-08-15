@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 48px;
+  padding: 8px 16px;
+  border: 2px solid var(--gray700);
+  width: 100%;
+
+  &:focus-within {
+    border: 2px solid var(--gray900);
+  }
+}
+
+.lg {
+  height: 44px;
+}
+
+.md {
+  height: 38px;
+}
+
+.sm {
+  height: 32px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--text-redesigned);
+  background: none;
+
+  &::placeholder {
+    color: var(--gray400);
+  }
+}
