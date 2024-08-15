@@ -1,10 +1,10 @@
 {
-    "*/**/*.{js,jsx,ts,tsx}": [
-        "prettier --write",
-        "eslint --fix",
-        "eslint"
+    "**/*.{js,jsx,ts,tsx}": [
+    "eslint --fix",
+    "prettier --write --ignore-unknown"
     ],
-    "*/**/*.{json,css,md}": [
-        "prettier --write"
+    "**/*.{css,scss}": [
+    "stylelint --fix",
+    "prettier --write --ignore-unknown"
     ]
 }
