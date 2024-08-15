@@ -1,50 +1,102 @@
-# React + TypeScript + Vite
+# Mindbox Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание
 
-Currently, two official plugins are available:
+**Mindbox Todo App** — это простое приложение для управления задачами, которое позволяет создавать, просматривать, удалять и фильтровать задачи (todo). Приложение построено на основе React, использует TypeScript и Vite для разработки и сборки.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Основные возможности
 
-## Expanding the ESLint configuration
+- **Создание задач:** Добавляйте новые задачи в список.
+- **Просмотр задач:** Просматривайте список всех созданных задач.
+- **Удаление задач:** Удаляйте ненужные задачи.
+- **Фильтрация задач:** Фильтруйте задачи по состоянию (выполненные, невыполненные).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Используемые технологии
 
-- Configure the top-level `parserOptions` property like this:
+- **React:** Библиотека для создания пользовательских интерфейсов.
+- **TypeScript:** Надстройка над JavaScript, добавляющая строгую типизацию.
+- **Vite:** Быстрый инструмент для разработки и сборки приложений.
+- **Zustand:** Легковесное решение для управления состоянием.
+- **React Router:** Маршрутизация для React-приложений.
+- **Sass:** Препроцессор для CSS, позволяющий писать стили на языке SCSS.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Установка и запуск
+
+### 1. Клонирование репозитория
+
+```bash
+git clone https://github.com/your-username/mindbox-todo-app.git
+cd mindbox-todo-app
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Установка зависимостей
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Убедитесь, что у вас установлены Node.js и npm. Затем выполните команду:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
+```
+
+### 3. Запуск приложения в режиме разработки
+
+Для запуска приложения в режиме разработки используйте команду:
+
+```bash
+npm run dev
+```
+
+### 4. Сборка приложения
+
+Для сборки приложения для продакшена выполните команду:
+
+```bash
+npm run build
+```
+
+### 5. Предварительный просмотр собранного приложения
+
+Чтобы предварительно просмотреть собранное приложение, выполните команду:
+
+```bash
+npm run preview
+```
+
+### 6. Линтинг и форматирование кода
+
+- Для проверки кода с помощью ESLint:
+
+  ```bash
+  npm run lint
+  ```
+
+- Для автоматического исправления ошибок линтинга:
+
+  ```bash
+  npm run lint:fix
+  ```
+
+- Для проверки стилей с помощью Stylelint:
+
+  ```bash
+  npm run style
+  ```
+
+- Для автоматического исправления ошибок стилей:
+
+  ```bash
+  npm run style:fix
+  ```
+
+- Для форматирования кода с помощью Prettier:
+
+  ```bash
+  npm run format
+  ```
+
+## Настройка Husky
+
+Husky используется для настройки хуков Git, чтобы гарантировать соблюдение стандартов кодирования перед каждым коммитом. В проекте Husky уже настроен, и вы можете использовать его через команду:
+
+```bash
+npm run prepare
 ```
