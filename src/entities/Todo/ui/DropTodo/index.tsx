@@ -3,7 +3,7 @@ import module from './DropTodo.module.scss';
 import classNames from 'classnames';
 import type { IDropTodo, TodoFilter } from '../../model';
 import { Todo } from '../Todo';
-import { plus, arrow } from 'entities/Todo/assets';
+import { Arrow, Plus } from 'entities/Todo/assets';
 import { InfoModule } from '../InfoModule';
 import { Button } from 'shared/ui/Button';
 import { useTodos } from 'entities/Todo/model/store/useTodos.ts';
@@ -21,7 +21,7 @@ const MainTitle: FC<Omit<IProps, 'todos'>> = memo(props => {
 
   return (
     <div className={module.main}>
-      {arrow}
+      <Arrow />
       <span>{title}</span>
       <Button
         icon
@@ -30,7 +30,7 @@ const MainTitle: FC<Omit<IProps, 'todos'>> = memo(props => {
         onClick={onRemove}
         className={module.remove}
       >
-        {plus}
+        <Plus />
       </Button>
     </div>
   );

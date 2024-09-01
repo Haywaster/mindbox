@@ -2,7 +2,7 @@ import { type FC, memo } from 'react';
 import module from './AddedInput.module.scss';
 import { Input } from 'shared/ui/Input';
 import { Button } from 'shared/ui/Button';
-import { plus } from 'entities/Todo';
+import { Plus } from 'entities/Todo';
 
 interface IProps {
   id: string;
@@ -30,7 +30,7 @@ export const AddedInput: FC<IProps> = memo(props => {
         className={module.remove}
         onClick={() => onClick(id)}
       >
-        {plus}
+        <Plus />
       </Button>
     </div>
   );

@@ -6,6 +6,7 @@ const defaultPreset = createDefaultPreset({
 
 const config: JestConfigWithTsJest = {
   ...defaultPreset,
+  testEnvironment: 'jsdom',
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/src/app/jest.setup.ts'],
   moduleDirectories: ['node_modules', 'src'],
@@ -13,7 +14,8 @@ const config: JestConfigWithTsJest = {
   moduleNameMapper: {
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/file.mock.js',
     '\\.(css|less|sass|scss)$': '<rootDir>/test/__mocks__/style.mock.js',
-    '\\.svg\\?react$': '<rootDir>/test/__mocks__/svgr.mock.js',
+    '\\.svg$': '<rootDir>/test/__mocks__/svgr.mock.tsx',
+    '\\.(svg+[?]+react)$': '<rootDir>/test/__mocks__/svgr.mock.tsx',
     'src/(.*)': '<rootDir>/src/$1',
     'shared/(.*)': '<rootDir>/src/shared/$1',
     'entities/(.*)': '<rootDir>/src/entities/$1',

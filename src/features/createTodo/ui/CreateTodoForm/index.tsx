@@ -4,7 +4,7 @@ import { Button } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
 import { AddedInput } from 'features/createTodo/ui/AddedInput';
 import type { IDropTodo, ITodo } from 'entities/Todo';
-import { plus } from 'entities/Todo';
+import { Plus } from 'entities/Todo';
 import { Flex } from 'shared/ui/Flex';
 import { useTodos } from 'entities/Todo/model/store/useTodos.ts';
 
@@ -85,11 +85,16 @@ export const CreateTodoForm: FC = memo(() => {
           mode='ghost'
           className={module.plus}
           onClick={handleAddInput}
+          aria-label='+'
         >
-          {plus}
+          <Plus />
         </Button>
       </div>
-      <Button className={module.createBtn} onClick={handleCreate}>
+      <Button
+        className={module.createBtn}
+        onClick={handleCreate}
+        aria-label='create'
+      >
         Create
       </Button>
     </Flex>
