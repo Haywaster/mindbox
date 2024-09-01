@@ -8,6 +8,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import unusedImports from 'eslint-plugin-unused-imports';
 import { fixupPluginRules } from '@eslint/compat';
+import jest from 'eslint-plugin-jest';
 
 export default [
   js.configs.recommended,
@@ -15,8 +16,22 @@ export default [
   eslintConfigPrettier,
 
   {
+    files: ['src/__test__/**'],
+    ...jest.configs['flat/recommended'],
+    rules: {
+      ...jest.configs['flat/recommended'].rules,
+      'jest/prefer-expect-assertions': 'off'
+    }
+  },
+  {
+    files: ['test/**'],
+    rules: {
+      'no-undef': 'off'
+    }
+  },
+  {
     files: ['**/*.{js,ts,jsx,tsx}'],
-    ignores: ['dist', 'node_modules', 'eslint.config.js'],
+    ignores: ['dist', 'node_modules', '*.{config,setup}.{js,ts}', 'test/**'],
     plugins: {
       react: pluginReact,
       'react-hooks': fixupPluginRules(pluginReactHooks),
