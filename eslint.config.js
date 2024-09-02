@@ -16,20 +16,6 @@ export default [
   eslintConfigPrettier,
 
   {
-    files: ['src/__test__/**'],
-    ...jest.configs['flat/recommended'],
-    rules: {
-      ...jest.configs['flat/recommended'].rules,
-      'jest/prefer-expect-assertions': 'off'
-    }
-  },
-  {
-    files: ['test/**'],
-    rules: {
-      'no-undef': 'off'
-    }
-  },
-  {
     files: ['**/*.{js,ts,jsx,tsx}'],
     ignores: ['dist', 'node_modules', '*.{config,setup}.{js,ts}', 'test/**'],
     plugins: {
@@ -109,6 +95,21 @@ export default [
           ignore: [0, 1]
         }
       ]
+    }
+  },
+  {
+    files: ['test/**'],
+    rules: {
+      'no-undef': 'off'
+    }
+  },
+  {
+    files: ['**/*.test.{js,ts,jsx,tsx}'],
+    ...jest.configs['flat/recommended'],
+    rules: {
+      ...jest.configs['flat/recommended'].rules,
+      'jest/prefer-expect-assertions': 'off',
+      '@typescript-eslint/no-magic-numbers': 'off'
     }
   }
 ];
