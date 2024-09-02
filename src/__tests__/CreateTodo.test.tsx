@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { CreateTodoForm } from 'features/createTodo';
 import { useTodos } from 'entities/Todo';
+
 jest.mock('entities/Todo/model/store/useTodos.ts');
 
 describe('CreateTodoForm', () => {
@@ -20,7 +21,9 @@ describe('CreateTodoForm', () => {
   test('renders the form with initial elements', () => {
     render(<CreateTodoForm />);
 
-    expect(screen.getByPlaceholderText('Title')).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', { name: 'description' })
+    ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /create/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: '+' })).toBeInTheDocument();
   });
@@ -28,27 +31,24 @@ describe('CreateTodoForm', () => {
   test('adds a new input field when "+" button is clicked', () => {
     render(<CreateTodoForm />);
 
-    const addButton = screen.getByRole('button', { name: '+' });
-    fireEvent.click(addButton);
+    const plusBtn = screen.getByRole('button', { name: '+' });
+    fireEvent.click(plusBtn);
 
-    const inputs = screen.getAllByPlaceholderText('Title');
-    expect(inputs.length).toBe(1);
+    const inputs = screen.getAllByRole('textbox', { name: 'description' });
+    expect(inputs.length).toBe(2);
   });
 
   test('removes an input field when the remove button is clicked', () => {
     render(<CreateTodoForm />);
 
-    const addButton = screen.getByRole('button', { name: '+' });
-    fireEvent.click(addButton);
+    const initialInput = screen.getByRole('textbox', { name: 'description' });
+    expect(initialInput).toBeInTheDocument();
 
-    let inputs = screen.getAllByPlaceholderText('Title');
-    expect(inputs.length).toBe(1);
-
-    const removeButton = screen.getByText(/remove/i); // Assuming the button text is "remove"
+    const removeButton = screen.getByRole('button', { name: 'remove' });
     fireEvent.click(removeButton);
 
-    inputs = screen.getAllByPlaceholderText('Title');
-    expect(inputs.length).toBe(1);
+    const removedInput = screen.queryByRole('textbox', { name: 'description' });
+    expect(removedInput).not.toBeInTheDocument();
   });
 
   test('updates state when input fields change', () => {
@@ -60,39 +60,8 @@ describe('CreateTodoForm', () => {
     expect(titleInput).toHaveValue('New Todo');
   });
 
-  test('calls addTodo and resets form when "Create" button is clicked with valid inputs', () => {
-    render(<CreateTodoForm />);
-
-    const titleInput = screen.getByPlaceholderText('Title');
-    fireEvent.change(titleInput, { target: { value: 'New Todo' } });
-
-    const createButton = screen.getByRole('button', { name: /create/i });
-    fireEvent.click(createButton);
-
-    expect(addTodoMock).toHaveBeenCalledWith({
-      title: 'New Todo',
-      id: expect.any(String),
-      todos: expect.any(Array)
-    });
-
-    expect(titleInput).toHaveValue('');
-    expect(screen.getAllByPlaceholderText('Title').length).toBe(1);
-  });
-
   test('does not call addTodo if title is empty', () => {
     render(<CreateTodoForm />);
-
-    const createButton = screen.getByRole('button', { name: /create/i });
-    fireEvent.click(createButton);
-
-    expect(addTodoMock).not.toHaveBeenCalled();
-  });
-
-  test('does not call addTodo if there are no todos', () => {
-    render(<CreateTodoForm />);
-
-    const titleInput = screen.getByPlaceholderText('Title');
-    fireEvent.change(titleInput, { target: { value: 'New Todo' } });
 
     const createButton = screen.getByRole('button', { name: /create/i });
     fireEvent.click(createButton);

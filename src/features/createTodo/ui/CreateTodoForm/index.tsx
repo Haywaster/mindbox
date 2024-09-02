@@ -64,6 +64,7 @@ export const CreateTodoForm: FC = memo(() => {
       <h2>Create Todo</h2>
       <div className={module.form}>
         <Input
+          aria-label='title'
           name='title'
           type='text'
           placeholder='Title'

@@ -17,6 +17,7 @@ export const AddedInput: FC<IProps> = memo(props => {
   return (
     <div className={module.wrapper}>
       <Input
+        aria-label='description'
         name={`description ${id}`}
         type='text'
         placeholder='Additional Task'
@@ -24,6 +25,7 @@ export const AddedInput: FC<IProps> = memo(props => {
         onChange={value => onChange(id, value)}
       />
       <Button
+        aria-label='remove'
         icon
         size='xs'
         mode='ghost'
